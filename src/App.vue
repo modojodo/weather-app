@@ -56,12 +56,14 @@
           <WeatherIcon img="weather-high"
                        v-if="maxTemp"
                        size="medium"
+                       :text="maxTemp"
                        className="points">
           </WeatherIcon>
         </div>
         <div class="column" v-if="minTemp">
           <WeatherIcon img="weather-low"
                        v-if="minTemp"
+                       :text="minTemp"
                        size="medium"
                        className="points">
           </WeatherIcon>
@@ -100,11 +102,11 @@ export default {
     },
     maxTemp() {
       const { weather } = this;
-      return weather.max ? `${weather.max} %` : null;
+      return weather.max ? `${weather.max}` : null;
     },
     minTemp() {
       const { weather } = this;
-      return weather.min ? `${weather.min} %` : null;
+      return weather.min ? `${weather.min}` : null;
     },
     weatherIcon() {
       return this.weather.icon ? ` http://openweathermap.org/img/wn/${this.weather.icon}@2x.png` : null;
