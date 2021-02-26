@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="section">
-
+    <h1 class="subtitle is-5">Weather App</h1>
     <div class="container">
       <div class="columns" v-if="invalidZipCode">
         <div class="column">
@@ -22,6 +22,7 @@
         <div class="column">
           <input class="input"
                  v-show="showZipcodeInput"
+                 placeholder="Enter zipcode to find weather"
                  type="text"
                  :class="{'is-danger': invalidZipCode}"
                  v-model="zipcode"
@@ -168,7 +169,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 100%;
-  background: linear-gradient(90deg, rgba(109, 250, 228, 1) 0%, rgba(112, 242, 235, 1) 35%, rgba(114, 239, 237, 1) 100%);
+  background: linear-gradient(120deg, rgba(109, 250, 228, 1) 25%, rgba(112, 242, 235, 1) 50%, rgba(114, 239, 237, 1) 100%);
 
 }
 
