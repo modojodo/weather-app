@@ -41,13 +41,13 @@
         <div class="column" v-if="wind">
           <WeatherIcon img="wind"
                        v-if="wind"
-                       text="wind">
+                       :text="wind">
           </WeatherIcon>
         </div>
         <div class="column" v-if="humidity">
           <WeatherIcon img="humidity"
                        v-if="humidity"
-                       text="humidity">
+                       :text="humidity">
           </WeatherIcon>
         </div>
       </div>
