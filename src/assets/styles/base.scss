@@ -1,0 +1,21 @@
+// Importing utilities (includes required mixins & variables)
+@import "~bulma/sass/utilities/all";
+
+// Import all the base styles
+@import "~bulma/sass/base/all";
+
+// Layout styles
+@import "~bulma/sass/layout/all";
+
+// Form elements and their shared variables
+@import "~bulma/sass/form/all";
+
+//  Elements and their shared variables
+@import "~bulma/sass/elements/all";
+
+//  Columns and their shared variables
+@import "~bulma/sass/grid/all";
+
+html, body {
+  height: 100%;
+}
