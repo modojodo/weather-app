@@ -114,11 +114,14 @@ export default {
     showCity() {
       return this.weather.name && !this.showZipcodeInput;
     },
-    isValidZip() {
-      return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.zipcode);
-    },
+  },
+  beforeMount() {
+    this.getWeather(null, true);
   },
   methods: {
+    isValidZip(zipcode) {
+      return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipcode);
+    },
     clearError() {
       this.invalidZipCode = false;
     },
@@ -130,13 +133,17 @@ export default {
       const isFocusOut = event.type === 'focusout';
       return (isEnterKeyPressed || isFocusOut)
     },
-    getWeather(event) {
+    getWeather(event, cached) {
       const { hasInput, isValidZip, clearError } = this;
+      const storedZip = localStorage.getItem('zip');
+      if (this.isValidZip(storedZip) && cached) {
+        this.zipcode = storedZip
+      }
       // If user has entered the value
-      if (hasInput(event)) {
+      if (cached || hasInput(event)) {
         clearError();
-        if (isValidZip) {
-
+        if (this.isValidZip(this.zipcode)) {
+          localStorage.setItem('zip', this.zipcode);
           fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${this.zipcode}&appid=${process.env.VUE_APP_API_KEY}&units=imperial`)
               .then(response => response.json())
               .then(data => {
